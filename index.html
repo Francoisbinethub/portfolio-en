@@ -148,7 +148,11 @@
   #contact{background:var(--ink);color:#dfeaf0}
   #contact h2{color:#fff}
   #contact .sec-head p{color:#a9c0cf}
+<<<<<<< HEAD
   .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+=======
+  .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+>>>>>>> 430bedc2d4be7cc391ce93596dac46f0a57132c9
   .contact-list{display:flex;flex-direction:column;gap:2px}
   .contact-list a{display:flex;align-items:center;gap:14px;padding:14px 4px;border-bottom:1px solid #1c405b;transition:.15s}
   .contact-list a:hover{padding-left:12px;color:#fff}
@@ -159,6 +163,7 @@
   .contact-card p{color:#a9c0cf;font-size:.94rem;margin-bottom:20px}
   .contact-card .btn{width:100%;text-align:center;margin-bottom:10px}
 
+<<<<<<< HEAD
   /* contact form */
   .contact-form{display:flex;flex-direction:column;gap:16px}
   .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -178,6 +183,8 @@
   .contact-mini a:hover{color:#fff}
   .contact-mini .cl-l{font-family:'IBM Plex Mono';font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:#5f7d8f}
 
+=======
+>>>>>>> 430bedc2d4be7cc391ce93596dac46f0a57132c9
   footer{background:var(--ink);color:#7fa0b4;border-top:1px solid #1c405b;padding:26px 0;font-size:.82rem}
   .foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
   .foot-in .mono{font-size:.72rem;letter-spacing:.08em}
@@ -207,7 +214,10 @@
     .services{grid-template-columns:1fr}
     .cases{grid-template-columns:1fr}
     .contact-grid{grid-template-columns:1fr}
+<<<<<<< HEAD
     .form-row{grid-template-columns:1fr}
+=======
+>>>>>>> 430bedc2d4be7cc391ce93596dac46f0a57132c9
     nav.links{display:none}
   }
   @media (max-width:460px){
@@ -429,6 +439,7 @@
         <p>Send me your file or a short description of your project — I'll tell you what's possible.</p>
       </div>
       <div class="contact-grid">
+<<<<<<< HEAD
         <div class="reveal">
           <form class="contact-form" id="contactForm">
             <div class="form-row">
@@ -448,6 +459,13 @@
             <button type="submit" class="btn teal form-submit">Send message</button>
             <span class="form-note">This opens your email app with the message pre-filled, addressed to me.</span>
           </form>
+=======
+        <div class="contact-list reveal">
+          <a href="mailto:1994binet@gmail.com"><span class="cl-l">Email</span><span class="cl-v">1994binet@gmail.com</span></a>
+          <a href="https://www.linkedin.com/in/francois-mahoussi" target="_blank" rel="noopener"><span class="cl-l">LinkedIn</span><span class="cl-v">in/francois-mahoussi</span></a>
+          <a href="https://github.com/Francoisbinethub" target="_blank" rel="noopener"><span class="cl-l">GitHub</span><span class="cl-v">Francoisbinethub</span></a>
+          <a href="https://mahoussidatainsights.netlify.app" target="_blank" rel="noopener"><span class="cl-l">Portfolio</span><span class="cl-v">mahoussidatainsights.netlify.app</span></a>
+>>>>>>> 430bedc2d4be7cc391ce93596dac46f0a57132c9
         </div>
         <div class="contact-card reveal">
           <h3>Hire me</h3>
@@ -455,12 +473,15 @@
           <a class="btn teal" href="https://www.fiverr.com/francoisbinet" target="_blank" rel="noopener">Hire me on Fiverr</a>
           <a class="btn ghost" style="background:transparent;color:#fff;border-color:#2c516e" href="https://www.upwork.com/freelancers/~01ae2e7a2dfd8b7dad?viewMode=1" target="_blank" rel="noopener">Hire me on Upwork</a>
           <a class="btn" style="background:#fff;color:var(--ink);border-color:#fff" href="CV_MAHOUSSI_Francois_EN.pdf" target="_blank" rel="noopener">Download my CV (PDF)</a>
+<<<<<<< HEAD
           <div class="contact-mini">
             <a href="mailto:1994binet@gmail.com"><span class="cl-l">Email</span> 1994binet@gmail.com</a>
             <a href="https://www.linkedin.com/in/francois-mahoussi" target="_blank" rel="noopener"><span class="cl-l">LinkedIn</span> in/francois-mahoussi</a>
             <a href="https://github.com/Francoisbinethub" target="_blank" rel="noopener"><span class="cl-l">GitHub</span> Francoisbinethub</a>
             <a href="https://mahoussidatainsights.netlify.app" target="_blank" rel="noopener"><span class="cl-l">Portfolio</span> mahoussidatainsights.netlify.app</a>
           </div>
+=======
+>>>>>>> 430bedc2d4be7cc391ce93596dac46f0a57132c9
         </div>
       </div>
     </div>
@@ -481,6 +502,7 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
   },{threshold:.14});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+<<<<<<< HEAD
 
   // contact form -> pre-filled email
   const cf = document.getElementById('contactForm');
@@ -495,6 +517,8 @@
       window.location.href = `mailto:1994binet@gmail.com?subject=${subject}&body=${body}`;
     });
   }
+=======
+>>>>>>> 430bedc2d4be7cc391ce93596dac46f0a57132c9
 </script>
 </body>
 </html>
