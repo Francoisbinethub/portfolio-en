@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>François Mahoussi — Data Analyst | MAHOUSSI DATA INSIGHTS</title>
+<meta name="description" content="Freelance data analyst. I clean, analyze and visualize your Excel/CSV data and deliver clear reports and dashboards that tell you what to do next." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A2A43;        /* deep navy */
+    --ink-2:#0F3552;
+    --teal:#1F8F86;       /* accent */
+    --teal-bright:#2FA8A0;
+    --blue:#3F72B0;
+    --paper:#F4F7F8;      /* cool paper */
+    --paper-2:#EAF0F2;
+    --text:#16232E;
+    --muted:#5D6E7A;
+    --line:#D8E2E6;
+    --white:#ffffff;
+    --warn:#C0392B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;color:var(--text);
+    background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--teal);font-weight:600}
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;color:var(--ink);line-height:1.1;font-weight:700}
+
+  /* ---------- top bar ---------- */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(244,247,248,.86);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk';font-weight:700;color:var(--ink)}
+  .brand .mk{width:20px;height:20px;background:var(--teal);border-radius:4px;display:inline-block}
+  .brand small{display:block;font-family:'IBM Plex Mono';font-weight:400;font-size:.6rem;
+    letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-top:1px}
+  nav.links{display:flex;gap:26px;align-items:center}
+  nav.links a{font-size:.9rem;color:var(--muted);font-weight:500}
+  nav.links a:hover{color:var(--ink)}
+  .btn{display:inline-block;font-family:'Space Grotesk';font-weight:600;font-size:.9rem;
+    padding:11px 20px;border-radius:8px;background:var(--ink);color:#fff;transition:.18s;border:1px solid var(--ink)}
+  .btn:hover{background:var(--ink-2);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:#fff}
+  .btn.teal{background:var(--teal);border-color:var(--teal)}
+  .btn.teal:hover{background:var(--teal-bright);border-color:var(--teal-bright)}
+  nav.links a.navcta{color:var(--ink);font-weight:600}
+
+  /* ---------- hero ---------- */
+  .hero{padding:76px 0 40px}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+  .hero h1{font-size:3.05rem;letter-spacing:-.02em;margin:18px 0 20px}
+  .hero h1 em{font-style:normal;color:var(--teal);position:relative;white-space:nowrap}
+  .hero p.lead{font-size:1.12rem;color:#33454f;max-width:37ch;margin-bottom:28px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .avail{margin-top:22px;display:inline-flex;align-items:center;gap:9px;font-size:.82rem;color:var(--muted);
+    font-family:'IBM Plex Mono'}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 rgba(31,143,134,.5);
+    animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,143,134,.45)}70%{box-shadow:0 0 0 9px rgba(31,143,134,0)}100%{box-shadow:0 0 0 0 rgba(31,143,134,0)}}
+
+  /* signature: before -> after */
+  .transform{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:18px;
+    box-shadow:0 18px 40px -24px rgba(10,42,67,.35)}
+  .t-label{font-family:'IBM Plex Mono';font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:8px;display:block}
+  .messy{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:6px}
+  .messy span{font-family:'IBM Plex Mono';font-size:.6rem;color:#9fb0ba;background:var(--paper-2);
+    border:1px solid #e3ebee;border-radius:3px;padding:4px 3px;text-align:center;overflow:hidden}
+  .messy span.bad{color:var(--warn);opacity:.75}
+  .arrow{text-align:center;color:var(--teal);font-size:1.2rem;margin:10px 0 12px;font-family:'Space Grotesk';font-weight:700}
+  .clean{background:var(--ink);border-radius:10px;padding:16px 16px 14px}
+  .clean .k{font-family:'Space Grotesk';font-weight:700;color:#fff;font-size:1.7rem;line-height:1}
+  .clean .k b{color:var(--teal-bright)}
+  .clean .kl{font-family:'IBM Plex Mono';font-size:.66rem;color:#9fc0be;margin-top:6px;letter-spacing:.04em}
+  .clean .bar{height:6px;background:#1b3f5a;border-radius:4px;margin-top:12px;overflow:hidden}
+  .clean .bar i{display:block;height:100%;width:84.6%;background:linear-gradient(90deg,var(--teal),var(--teal-bright))}
+
+  /* ---------- metrics strip ---------- */
+  .metrics{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--white)}
+  .metrics-in{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .metric{padding:26px 20px;text-align:center;border-right:1px solid var(--line)}
+  .metric:last-child{border-right:none}
+  .metric .n{font-family:'Space Grotesk';font-weight:700;font-size:1.9rem;color:var(--ink)}
+  .metric .l{font-family:'IBM Plex Mono';font-size:.68rem;letter-spacing:.06em;color:var(--muted);
+    text-transform:uppercase;margin-top:4px}
+
+  /* ---------- sections ---------- */
+  section{padding:72px 0}
+  .sec-head{margin-bottom:38px;max-width:60ch}
+  .sec-head h2{font-size:2.05rem;letter-spacing:-.015em;margin:12px 0 10px}
+  .sec-head p{color:var(--muted)}
+
+  /* process */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .step{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:22px}
+  .step .num{font-family:'IBM Plex Mono';font-weight:600;color:var(--teal);font-size:.8rem;letter-spacing:.1em}
+  .step h3{font-size:1.05rem;margin:10px 0 6px}
+  .step p{font-size:.9rem;color:var(--muted)}
+
+  /* services */
+  .services{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .svc{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+  .svc .ic{flex:none;width:40px;height:40px;border-radius:9px;background:var(--paper-2);display:grid;place-items:center}
+  .svc .ic svg{width:22px;height:22px;stroke:var(--teal);fill:none;stroke-width:1.8}
+  .svc h3{font-size:1.05rem;margin-bottom:5px}
+  .svc p{font-size:.9rem;color:var(--muted)}
+
+  /* case studies */
+  #work{background:linear-gradient(180deg,var(--paper),var(--paper-2))}
+  .cases{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .case{background:var(--white);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;
+    transition:.2s}
+  .case:hover{transform:translateY(-3px);box-shadow:0 22px 44px -28px rgba(10,42,67,.4)}
+  .case.wide{grid-column:1 / -1}
+  .case .top{padding:24px 24px 0}
+  .case .tag{font-family:'IBM Plex Mono';font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:600}
+  .case h3{font-size:1.3rem;margin:8px 0 10px}
+  .case p{font-size:.94rem;color:#3a4b55}
+  .case .result{margin:16px 0;padding:14px 16px;background:var(--paper);border-left:3px solid var(--teal);border-radius:0 8px 8px 0}
+  .case .result .rl{font-family:'IBM Plex Mono';font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .case .result strong{color:var(--ink)}
+  .case .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .case .facts span{font-family:'IBM Plex Mono';font-size:.68rem;color:var(--muted);background:var(--paper-2);
+    padding:4px 9px;border-radius:20px}
+  .case .foot{margin-top:auto;padding:18px 24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .case .foot .tools{font-family:'IBM Plex Mono';font-size:.72rem;color:var(--muted)}
+  .case .foot a{font-family:'Space Grotesk';font-weight:600;font-size:.86rem;color:var(--ink);display:inline-flex;align-items:center;gap:6px}
+  .case .foot a:hover{color:var(--teal)}
+
+  /* skills */
+  .skills{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{font-family:'IBM Plex Mono';font-size:.82rem;background:var(--white);border:1px solid var(--line);
+    border-radius:8px;padding:9px 14px;color:var(--ink)}
+  .chip b{color:var(--teal)}
+
+  /* contact */
+  #contact{background:var(--ink);color:#dfeaf0}
+  #contact h2{color:#fff}
+  #contact .sec-head p{color:#a9c0cf}
+  .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+  .contact-list{display:flex;flex-direction:column;gap:2px}
+  .contact-list a{display:flex;align-items:center;gap:14px;padding:14px 4px;border-bottom:1px solid #1c405b;transition:.15s}
+  .contact-list a:hover{padding-left:12px;color:#fff}
+  .contact-list .cl-l{font-family:'IBM Plex Mono';font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#7fa0b4;width:86px;flex:none}
+  .contact-list .cl-v{font-family:'Space Grotesk';font-weight:600;color:#eaf3f8}
+  .contact-card{background:var(--ink-2);border:1px solid #1c405b;border-radius:16px;padding:30px}
+  .contact-card h3{color:#fff;font-size:1.3rem;margin-bottom:8px}
+  .contact-card p{color:#a9c0cf;font-size:.94rem;margin-bottom:20px}
+  .contact-card .btn{width:100%;text-align:center;margin-bottom:10px}
+
+  footer{background:var(--ink);color:#7fa0b4;border-top:1px solid #1c405b;padding:26px 0;font-size:.82rem}
+  .foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+  .foot-in .mono{font-size:.72rem;letter-spacing:.08em}
+
+  /* embedded report viewer */
+  .viewer{margin:4px 0 18px}
+  .viewer summary{cursor:pointer;font-family:'Space Grotesk';font-weight:600;color:var(--teal);
+    font-size:.9rem;list-style:none;display:inline-flex;align-items:center;gap:8px;padding:8px 0}
+  .viewer summary::-webkit-details-marker{display:none}
+  .viewer summary::before{content:"\25B8";transition:transform .2s;display:inline-block}
+  .viewer[open] summary::before{transform:rotate(90deg)}
+  .viewer iframe{width:100%;height:640px;border:1px solid var(--line);border-radius:10px;
+    margin-top:12px;background:var(--paper-2)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:34px}
+    .hero{padding:48px 0 30px}
+    .hero h1{font-size:2.35rem}
+    .metrics-in{grid-template-columns:1fr 1fr}
+    .metric:nth-child(2){border-right:none}
+    .metric{border-bottom:1px solid var(--line)}
+    .steps{grid-template-columns:1fr 1fr}
+    .services{grid-template-columns:1fr}
+    .cases{grid-template-columns:1fr}
+    .contact-grid{grid-template-columns:1fr}
+    nav.links{display:none}
+  }
+  @media (max-width:460px){
+    .metrics-in{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr}
+    .hero h1{font-size:2.05rem}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <span class="mk" aria-hidden="true"></span>
+      <span>MAHOUSSI DATA INSIGHTS<small>Turning data into better decisions</small></span>
+    </a>
+    <nav class="links">
+      <a href="#work">Case studies</a>
+      <a href="#services">Services</a>
+      <a href="#about">Approach</a>
+      <a class="navcta" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Freelance Data Analyst · Cotonou, Benin</span>
+        <h1>Turning messy data into <em>decisions you can act on.</em></h1>
+        <p class="lead">I'm François. I clean, analyze and visualize your Excel or CSV data — then hand back clear reports and dashboards that tell you exactly what to do next.</p>
+        <div class="hero-cta">
+          <a class="btn teal" href="#work">View case studies</a>
+          <a class="btn ghost" href="#contact">Work with me</a>
+        </div>
+        <span class="avail"><span class="dot" aria-hidden="true"></span> Available for new projects — remote worldwide</span>
+      </div>
+
+      <div class="transform" aria-label="From raw data to a clear insight">
+        <span class="t-label">Raw client file</span>
+        <div class="messy" aria-hidden="true">
+          <span>N/A</span><span>1 250</span><span class="bad">??</span><span>0</span>
+          <span class="bad">doublon</span><span>489</span><span>-</span><span>12</span>
+          <span>46023</span><span class="bad">erreur</span><span>84</span><span>350</span>
+        </div>
+        <div class="arrow" aria-hidden="true">↓ &nbsp;cleaned &amp; analyzed</div>
+        <div class="clean">
+          <div class="k">84.6<b>%</b></div>
+          <div class="kl">order completion rate — 5 stores, 500 orders</div>
+          <div class="bar" aria-hidden="true"><i></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <div class="metrics">
+    <div class="wrap metrics-in">
+      <div class="metric"><div class="n">500+</div><div class="l">Orders analyzed</div></div>
+      <div class="metric"><div class="n">€81K</div><div class="l">Revenue audited</div></div>
+      <div class="metric"><div class="n">17-page</div><div class="l">Decision report</div></div>
+      <div class="metric"><div class="n">2</div><div class="l">In-depth case studies</div></div>
+    </div>
+  </div>
+
+  <!-- APPROACH -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">How I work</span>
+        <h2>Every file goes through the same four steps</h2>
+        <p>A repeatable method — so you get results you can trust, not just charts.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="num">01 — AUDIT</div><h3>Audit</h3><p>Spot inconsistent formats, duplicates and missing values before touching anything.</p></div>
+        <div class="step reveal"><div class="num">02 — STANDARDIZE</div><h3>Standardize</h3><p>Unify naming, dates and structure into one consistent, analysis-ready dataset.</p></div>
+        <div class="step reveal"><div class="num">03 — ANALYZE</div><h3>Analyze</h3><p>Build the indicators that matter and cross-check totals instead of guessing.</p></div>
+        <div class="step reveal"><div class="num">04 — DELIVER</div><h3>Deliver</h3><p>A clean file, a clear report, and concrete recommendations you can act on.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Services</span>
+        <h2>What I can do for you</h2>
+      </div>
+      <div class="services">
+        <div class="svc reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 5h18M3 12h18M3 19h18"/></svg></div>
+          <div><h3>Data cleaning &amp; formatting</h3><p>Messy Excel/CSV files turned into clean, consistent, ready-to-use datasets.</p></div>
+        </div>
+        <div class="svc reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+          <div><h3>Dashboards (Power BI)</h3><p>Interactive dashboards so you see sales, stock and customers at a glance.</p></div>
+        </div>
+        <div class="svc reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6"/></svg></div>
+          <div><h3>Analysis with Python &amp; SQL</h3><p>The right questions asked of your data — and the real answers behind them.</p></div>
+        </div>
+        <div class="svc reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M6 2h9l3 3v17H6zM14 2v4h4"/></svg></div>
+          <div><h3>Professional PDF reports</h3><p>A polished report that tells decision-makers what to do, not just what happened.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Case studies</span>
+        <h2>Real analyses, real decisions</h2>
+        <p>Each case study is a full PDF report — download and see the method end to end.</p>
+      </div>
+      <div class="cases">
+
+        <div class="case wide reveal">
+          <div class="top">
+            <span class="tag">Retail · Python / Pandas</span>
+            <h3>KinTop Fashion — Retail Sales Analysis</h3>
+            <p>A 5-store fashion chain had 500 orders in Excel and no clear view of its performance. I cleaned the data, ran a full diagnosis, and delivered a 17-page report with 7 prioritized recommendations.</p>
+            <div class="result">
+              <div class="rl">Key result</div>
+              <span>Uncovered a store running at <strong>70% order completion vs 85-89% elsewhere</strong> — a problem invisible until then — plus 6 more action levers.</span>
+              <div class="facts"><span>500 orders</span><span>€81,101 revenue</span><span>5 stores</span><span>7 recommendations</span></div>
+            </div>
+            <details class="viewer">
+              <summary>Read the full 17-page report on this page</summary>
+              <iframe src="KinTopFashion_Report_EN.pdf" title="KinTop Fashion — full report" loading="lazy"></iframe>
+            </details>
+          </div>
+          <div class="foot">
+            <span class="tools">Python · Pandas · PDF reporting</span>
+            <a href="KinTopFashion_Report_EN.pdf" target="_blank" rel="noopener">Read the report (PDF) →</a>
+          </div>
+        </div>
+
+        <div class="case reveal">
+          <div class="top">
+            <span class="tag">Healthcare · Excel / Python</span>
+            <h3>Health Center Network — Stock Management</h3>
+            <p>Monthly stock records from 5 health centers, entered separately and hard to compare. I consolidated 18 records and built consumption, rotation and stockout indicators.</p>
+            <div class="result">
+              <div class="rl">Key result</div>
+              <span>Flagged <strong>one center with a 25% stockout rate</strong> and a consumption trend rising 45% faster than supply.</span>
+              <div class="facts"><span>5 centers</span><span>18 records</span><span>5 recommendations</span></div>
+            </div>
+            <details class="viewer">
+              <summary>Read the full 12-page report on this page</summary>
+              <iframe src="HealthCenters_CaseStudy_EN.pdf" title="Health Center Network — full report" loading="lazy"></iframe>
+            </details>
+          </div>
+          <div class="foot">
+            <span class="tools">Excel · Python</span>
+            <a href="HealthCenters_CaseStudy_EN.pdf" target="_blank" rel="noopener">Read the report (PDF) →</a>
+          </div>
+        </div>
+
+        <div class="case reveal">
+          <div class="top">
+            <span class="tag">Data cleaning · Work sample</span>
+            <h3>Data Cleaning — Before / After</h3>
+            <p>A short, concrete sample: inconsistent naming, mixed date formats and missing values, cleaned and standardized line by line — the foundation of every project.</p>
+            <div class="result">
+              <div class="rl">What it shows</div>
+              <span>My exact method: <strong>audit → standardize → verify → deliver</strong>, with a clear summary of what changed.</span>
+              <div class="facts"><span>Before / after</span><span>Reproducible</span></div>
+            </div>
+          </div>
+          <div class="foot">
+            <span class="tools">Excel · CSV</span>
+            <a href="Data_Cleaning_Work_Sample.pdf" target="_blank" rel="noopener">View the sample (PDF) →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Toolbox</span>
+        <h2>Tools &amp; skills</h2>
+      </div>
+      <div class="skills reveal">
+        <span class="chip"><b>#</b> Power BI (Power Query, DAX)</span>
+        <span class="chip"><b>#</b> Advanced Excel</span>
+        <span class="chip"><b>#</b> Python (Pandas)</span>
+        <span class="chip"><b>#</b> SQL</span>
+        <span class="chip"><b>#</b> Data cleaning &amp; structuring</span>
+        <span class="chip"><b>#</b> Dashboards &amp; reporting</span>
+        <span class="chip"><b>#</b> Git / GitHub</span>
+        <span class="chip"><b>#</b> AI-assisted analysis</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Get in touch</span>
+        <h2>Let's turn your data into decisions</h2>
+        <p>Send me your file or a short description of your project — I'll tell you what's possible.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-list reveal">
+          <a href="mailto:1994binet@gmail.com"><span class="cl-l">Email</span><span class="cl-v">1994binet@gmail.com</span></a>
+          <a href="https://www.linkedin.com/in/francois-mahoussi" target="_blank" rel="noopener"><span class="cl-l">LinkedIn</span><span class="cl-v">in/francois-mahoussi</span></a>
+          <a href="https://github.com/Francoisbinethub" target="_blank" rel="noopener"><span class="cl-l">GitHub</span><span class="cl-v">Francoisbinethub</span></a>
+          <a href="https://mahoussidatainsights.netlify.app" target="_blank" rel="noopener"><span class="cl-l">Portfolio</span><span class="cl-v">mahoussidatainsights.netlify.app</span></a>
+        </div>
+        <div class="contact-card reveal">
+          <h3>Hire me</h3>
+          <p>Available on Fiverr and Upwork for data cleaning, dashboards and analysis reports.</p>
+          <a class="btn teal" href="FIVERR_LINK_HERE" target="_blank" rel="noopener">Hire me on Fiverr</a>
+          <a class="btn ghost" style="background:transparent;color:#fff;border-color:#2c516e" href="UPWORK_LINK_HERE" target="_blank" rel="noopener">Hire me on Upwork</a>
+          <a class="btn" style="background:#fff;color:var(--ink);border-color:#fff" href="CV_MAHOUSSI_Francois_EN.pdf" target="_blank" rel="noopener">Download my CV (PDF)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <span class="brand" style="color:#eaf3f8"><span class="mk" aria-hidden="true"></span> MAHOUSSI DATA INSIGHTS</span>
+    <span class="mono">© 2026 François Mahoussi · Turning data into better decisions</span>
+  </div>
+</footer>
+
+<script>
+  // scroll reveal (respects reduced motion via CSS)
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
